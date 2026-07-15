@@ -1,0 +1,36 @@
+table MeasureIndex
+	lineageTag: 03873b13-5e95-42ce-92be-3543148da2fa
+
+	column X
+		formatString: 0
+		lineageTag: 0fd3974c-f9d7-44d0-a69e-18216782c34b
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [X]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Label
+		lineageTag: b77c49d2-713f-48a6-a9fa-28d849f48ea9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Label]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition MeasureIndex = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "X", INTEGER,
+				    "Label", STRING,
+				    {
+				        {1, "Impressions"},
+				        {2, "Clicks"},
+				        {3, "Conversions"}
+				    }
+				)
+
+	annotation PBI_Id = 1063866042944c9490d2e38d5af4e07e
+

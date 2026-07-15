@@ -1,0 +1,27 @@
+table dimCalendar_Slicer
+	lineageTag: b988aa40-6e2c-4225-9947-9c9575d2e54c
+
+	column Date
+		formatString: General Date
+		lineageTag: 0e72470b-ec30-4241-82a2-0713a1a715d5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 120df38b-1476-434a-8144-a86f30fcb67b
+			defaultHierarchy: LocalDateTable_7cabefc9-c55b-41e8-8c72-01887d0f6d8a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dimCalendar_Slicer = calculated
+		mode: import
+		source =
+				
+				SELECTCOLUMNS ( dimKalender,
+				    "Date", dimKalender[Date]
+				)
+
+	annotation PBI_Id = ddb9450064bb42e6ae1270126f1c36e6
+

@@ -1,0 +1,126 @@
+table 'Selection 1'
+	lineageTag: 84fd95c3-69b1-48d4-8095-9c76b813f7ee
+
+	measure 'Selection Metric 1' =
+			
+			SWITCH(
+			        TRUE(),
+			        SELECTEDVALUE('Selection 1'[Selection 1 Order]) = 0 , [Impressions],
+			        SELECTEDVALUE('Selection 1'[Selection 1 Order]) = 1 , [Clicks],
+			        SELECTEDVALUE('Selection 1'[Selection 1 Order]) = 2 , [Conversions],
+			        SELECTEDVALUE('Selection 1'[Selection 1 Order]) = 3 , [Cost],
+			        SELECTEDVALUE('Selection 1'[Selection 1 Order]) = 4 , [Conversion Value],
+			        SELECTEDVALUE('Selection 1'[Selection 1 Order]) = 5 , [CPA],
+			        SELECTEDVALUE('Selection 1'[Selection 1 Order]) = 6 , [CTR],
+			        SELECTEDVALUE('Selection 1'[Selection 1 Order]) = 7 , [CVR],
+			        SELECTEDVALUE('Selection 1'[Selection 1 Order]) = 8 , [ROAS]
+			        )
+		lineageTag: ad946bb7-d542-4ae1-9711-75b6b85a957b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Selection 1 Previous' =
+			
+			VAR _SelectedMeasure = SELECTEDVALUE('Selection 1'[Selection 1 Order])
+			
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    _SelectedMeasure = 0, [Impressions Previous],
+			    _SelectedMeasure = 1, [Clicks Previous],
+			    _SelectedMeasure = 2, [Conversions Previous],
+			    _SelectedMeasure = 3, [Cost Previous],
+			    _SelectedMeasure = 4, [Conversion Value Previous],
+			    _SelectedMeasure = 5, [CPA Previous],
+			    _SelectedMeasure = 6, [CTR Previous],
+			    _SelectedMeasure = 7, [CVR Previous],
+			    _SelectedMeasure = 8, [ROAS Previous]
+			)
+		lineageTag: 484392c4-0ead-49f1-ba82-f384e9f94a27
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Selection Metric 1 Icon' =
+			
+			SWITCH(
+			        TRUE(),
+			        SELECTEDVALUE('Selection 1'[Selection 1 Order]) = 0 , [Impressions Icon Variance],
+			        SELECTEDVALUE('Selection 1'[Selection 1 Order]) = 1 , [Clicks Icon Variance],
+			        SELECTEDVALUE('Selection 1'[Selection 1 Order]) = 2 , [Conversions Icon Variance],
+			        SELECTEDVALUE('Selection 1'[Selection 1 Order]) = 3 , [Cost Icon Variance],
+			        SELECTEDVALUE('Selection 1'[Selection 1 Order]) = 4 , [Conversion Value Icon Variance],
+			        SELECTEDVALUE('Selection 1'[Selection 1 Order]) = 5 , [CPA Icon Variance],
+			        SELECTEDVALUE('Selection 1'[Selection 1 Order]) = 6 , [CTR Icon Variance],
+			        SELECTEDVALUE('Selection 1'[Selection 1 Order]) = 7 , [CVR Icon Variance],
+			        SELECTEDVALUE('Selection 1'[Selection 1 Order]) = 8 , [ROAS Icon Variance]
+			        )
+		lineageTag: 6cbff714-1e6d-4733-b911-57812b70840c
+
+	measure 'Selection Metric 1 Icon Color' =
+			
+			SWITCH(
+			        TRUE(),
+			        SELECTEDVALUE('Selection 1'[Selection 1 Order]) = 0 , [Impressions Icon Color],
+			        SELECTEDVALUE('Selection 1'[Selection 1 Order]) = 1 , [Clicks Icon Color],
+			        SELECTEDVALUE('Selection 1'[Selection 1 Order]) = 2 , [Conversions Icon Color],
+			        SELECTEDVALUE('Selection 1'[Selection 1 Order]) = 3 , [Cost Icon Color],
+			        SELECTEDVALUE('Selection 1'[Selection 1 Order]) = 4 , [Conversion Value Icon Color],
+			        SELECTEDVALUE('Selection 1'[Selection 1 Order]) = 5 , [CPA Icon Color],
+			        SELECTEDVALUE('Selection 1'[Selection 1 Order]) = 6 , [CTR Icon Color],
+			        SELECTEDVALUE('Selection 1'[Selection 1 Order]) = 7 , [CVR Icon Color],
+			        SELECTEDVALUE('Selection 1'[Selection 1 Order]) = 8 , [ROAS Icon Color]
+			        )
+		lineageTag: a49a3ac4-bffc-4ff6-95f8-573b6789ab8a
+
+	column 'Selection 1'
+		lineageTag: d79b9de3-e4ac-4c42-b0f5-57b23102a545
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Selection 1 Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Selection 1 Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Selection 1 Fields'
+		isHidden
+		lineageTag: 06111741-6944-49de-8eb3-3b3ef21d571e
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Selection 1 Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Selection 1 Order'
+		isHidden
+		formatString: 0
+		lineageTag: 703b6960-5f7d-49a8-8dc0-3c2a0cbe9f67
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Selection 1' = calculated
+		mode: import
+		source =
+				{
+				    ("Impressions", NAMEOF('Measure'[Impressions Norm]), 0),
+				    ("Clicks", NAMEOF('Measure'[Clicks Norm]), 1),
+				    ("Conversions", NAMEOF('Measure'[Conversions Norm]), 2),
+				    ("Cost", NAMEOF('Measure'[Cost Norm]), 3),
+				    ("Conversion Value", NAMEOF('Measure'[Conversion Value Norm]), 4),
+				    ("CPA", NAMEOF('Measure'[CPA Norm]), 5),
+				    ("CTR", NAMEOF('Measure'[CTR Norm]), 6),
+				    ("CVR", NAMEOF('Measure'[CVR Norm]), 7),
+				    ("ROAS", NAMEOF('Measure'[ROAS Norm]), 8)
+				}
+
+	annotation PBI_Id = 8b82d4f6a5d245308045b37f90805aec
+

@@ -1,0 +1,39 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-DE
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["factAds","factKeywords","factCampaigns","dimCampaigns","Measure","PeriodsSelection","dimCountry","Tooltip Layout"]
+
+annotation PBI_ProTooling = ["TMDLView_Desktop"]
+
+ref table factAds
+ref table DateTableTemplate_772701bb-fca2-43c6-8521-0c6b783976fb
+ref table factKeywords
+ref table factCampaigns
+ref table dimCampaigns
+ref table dimKalender
+ref table LocalDateTable_42b91725-cf2b-49bb-8fbb-72a5dc047799
+ref table LocalDateTable_edf5f81c-23bf-46d7-8559-263cd363032e
+ref table LocalDateTable_755afca2-81c7-49c5-919b-87b63b2a7f65
+ref table LocalDateTable_a0b65e61-b967-4a30-a2c8-0d66ae3213e5
+ref table Measure
+ref table 'Selection 1'
+ref table 'Selection 2'
+ref table 'Selection 3'
+ref table PeriodsAggregation
+ref table PeriodsSelection
+ref table MeasureIndex
+ref table dimCalendar_Slicer
+ref table LocalDateTable_7cabefc9-c55b-41e8-8c72-01887d0f6d8a
+ref table TopN
+ref table dimCountry
+ref table 'Tooltip Layout'
+
+ref cultureInfo en-US
+

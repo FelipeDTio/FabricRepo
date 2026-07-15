@@ -1,0 +1,61 @@
+relationship 29bcc7a8-e7ae-abb5-72c8-f197048cd963
+	fromColumn: factAds.'Campaign ID'
+	toColumn: dimCampaigns.'Campaign ID'
+
+relationship 432d5525-8a29-9414-f0af-eba753876975
+	fromColumn: factKeywords.'Campaign ID'
+	toColumn: dimCampaigns.'Campaign ID'
+
+relationship 5cf8b124-19cf-98e3-0c63-65c498dc8d1d
+	fromColumn: factCampaigns.'Campaign ID'
+	toColumn: dimCampaigns.'Campaign ID'
+
+relationship 8f65a0ad-0389-4ffb-a6f6-90132ee2fe28
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dimKalender.Date
+	toColumn: LocalDateTable_42b91725-cf2b-49bb-8fbb-72a5dc047799.Date
+
+relationship 07585206-f7b0-4a81-93bb-0f50b0803dd7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dimKalender.MonthYear
+	toColumn: LocalDateTable_edf5f81c-23bf-46d7-8559-263cd363032e.Date
+
+relationship ff184c2b-6d1a-4bb3-a9d7-88090a5b238e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dimKalender.QuartalJahr
+	toColumn: LocalDateTable_755afca2-81c7-49c5-919b-87b63b2a7f65.Date
+
+relationship 8f29ac69-f01c-4a67-8bd4-2615b1d86bdf
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dimKalender.WocheJahr
+	toColumn: LocalDateTable_a0b65e61-b967-4a30-a2c8-0d66ae3213e5.Date
+
+relationship c1daf7ac-40bf-2699-4885-851faa762a5e
+	fromColumn: factKeywords.Date
+	toColumn: dimKalender.Date
+
+relationship 9fb17a0e-d865-6a8b-4fd1-1ace277c6063
+	fromColumn: factAds.Date
+	toColumn: dimKalender.Date
+
+relationship f9687310-c73b-afa2-d634-ac781680e485
+	fromColumn: factCampaigns.Date
+	toColumn: dimKalender.Date
+
+relationship 120df38b-1476-434a-8144-a86f30fcb67b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dimCalendar_Slicer.Date
+	toColumn: LocalDateTable_7cabefc9-c55b-41e8-8c72-01887d0f6d8a.Date
+
+relationship AutoDetected_d60783bf-ce5c-4fe7-905e-0e93bd690644
+	fromColumn: factAds.Country
+	toColumn: dimCountry.Country
+
+relationship AutoDetected_c607e57d-c4c3-4a33-9093-ec7ce1615d2a
+	fromColumn: factKeywords.Country
+	toColumn: dimCountry.Country
+
+relationship AutoDetected_7fa95a90-b0df-4aa2-b12c-fd4d481dad82
+	fromColumn: factCampaigns.Country
+	toColumn: dimCountry.Country
+

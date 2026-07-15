@@ -1,0 +1,125 @@
+table factAds
+	lineageTag: 50af73c8-d576-464f-ac5f-5c8669e705fd
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: db67737a-34e8-4dc1-b644-0b7440bef72d
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Campaign Name'
+		dataType: string
+		lineageTag: 3c4e6ca4-6072-444b-a2bd-26c656e3f407
+		summarizeBy: none
+		sourceColumn: Campaign Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Campaign ID'
+		dataType: string
+		lineageTag: 66ad63e6-4da5-4059-894c-badf7a75fb75
+		summarizeBy: none
+		sourceColumn: Campaign ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ad Group Name'
+		dataType: string
+		lineageTag: df44c90b-ba18-4429-854a-2c22e0f27d34
+		summarizeBy: none
+		sourceColumn: Ad Group Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Device
+		dataType: string
+		lineageTag: d3ea3c07-63d3-41fe-a87b-3445be49022e
+		summarizeBy: none
+		sourceColumn: Device
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 2b765f5b-317e-44f1-a8cf-f2cd78a18f0a
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ad Name'
+		dataType: string
+		lineageTag: bc80dbb4-9dde-4659-bb33-bd3b6ba8cb61
+		summarizeBy: none
+		sourceColumn: Ad Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Impressions
+		dataType: int64
+		formatString: 0
+		lineageTag: 16a403ad-e1de-4a30-b5f4-c9c020bed9e5
+		summarizeBy: sum
+		sourceColumn: Impressions
+
+		annotation SummarizationSetBy = Automatic
+
+	column Clicks
+		dataType: int64
+		formatString: 0
+		lineageTag: 0a16726d-8c66-40a9-892f-87e6d3152f2a
+		summarizeBy: sum
+		sourceColumn: Clicks
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cost
+		dataType: double
+		lineageTag: f58ac974-6138-426e-834d-db0ad55cd469
+		summarizeBy: sum
+		sourceColumn: Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Conversions
+		dataType: double
+		lineageTag: 41ec706c-e5b7-4337-843e-87b2fb7ad52f
+		summarizeBy: sum
+		sourceColumn: Conversions
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Conversion Value'
+		dataType: double
+		lineageTag: 6db6933f-f5f3-472e-bdbd-f69ddb03c1f9
+		summarizeBy: sum
+		sourceColumn: Conversion Value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition factAds = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\FelipeLopezNavarro\Data Training Dropbox\Data Training\16. Demo Reports\E-commerce\AdWords_Instruments_Store_Dataset.xlsx"), null, true),
+				    Ads_Sheet = Source{[Item="Ads",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Ads_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Date", type date}, {"Campaign Name", type text}, {"Campaign ID", type text}, {"Ad Group Name", type text}, {"Device", type text}, {"Country", type text}, {"Ad Name", type text}, {"Impressions", Int64.Type}, {"Clicks", Int64.Type}, {"Cost", type number}, {"Conversions", type number}, {"Conversion Value", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

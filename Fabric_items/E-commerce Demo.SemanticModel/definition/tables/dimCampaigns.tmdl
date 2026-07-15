@@ -1,0 +1,116 @@
+table dimCampaigns
+	lineageTag: 49f85d58-9bfb-45d0-9cf0-5133baabcd00
+
+	measure 'Selection 1 Variance' =
+			
+			VAR _SelectedMeasure = SELECTEDVALUE('Selection 1'[Selection 1 Order])
+			
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    _SelectedMeasure = 0, [Impressions] - [Impressions Previous],
+			    _SelectedMeasure = 1, [Clicks] - [Clicks Previous],
+			    _SelectedMeasure = 2, [Conversions] - [Conversions Previous],
+			    _SelectedMeasure = 3, [Cost] - [Cost Previous],
+			    _SelectedMeasure = 4, [Conversion Value] - [Conversion Value Previous],
+			    _SelectedMeasure = 5, [CPA] - [CPA Previous],
+			    _SelectedMeasure = 6, [CTR] - [CTR Previous],
+			    _SelectedMeasure = 7, [CVR] - [CVR Previous],
+			    _SelectedMeasure = 8, [ROAS] - [ROAS Previous]
+			)
+		lineageTag: 603e6dcc-a01f-4c29-9d90-6a986a2fa2bd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Selection 1 Variance 2' =
+			
+			VAR _SelectedMeasure = SELECTEDVALUE('Selection 1'[Selection 1 Order])
+			
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    _SelectedMeasure = 0, [Impressions] - [Impressions Previous],
+			    _SelectedMeasure = 1, [Clicks] - [Clicks Previous],
+			    _SelectedMeasure = 2, [Conversions] - [Conversions Previous],
+			    _SelectedMeasure = 3, [Cost] - [Cost Previous],
+			    _SelectedMeasure = 4, [Conversion Value] - [Conversion Value Previous],
+			    _SelectedMeasure = 5, [CPA] - [CPA Previous],
+			    _SelectedMeasure = 6, [CTR] - [CTR Previous],
+			    _SelectedMeasure = 7, [CVR] - [CVR Previous],
+			    _SelectedMeasure = 8, [ROAS] - [ROAS Previous]
+			)
+		lineageTag: 7a492e1b-3701-45d6-9903-d0b87c2b9e98
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Selection 1 Variance ABS' =
+			
+			VAR _SelectedMeasure = SELECTEDVALUE('Selection 1'[Selection 1 Order])
+			
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    _SelectedMeasure = 0, ABS([Impressions] - [Impressions Previous]),
+			    _SelectedMeasure = 1, ABS([Clicks] - [Clicks Previous]),
+			    _SelectedMeasure = 2, ABS([Conversions] - [Conversions Previous]),
+			    _SelectedMeasure = 3, ABS([Cost] - [Cost Previous]),
+			    _SelectedMeasure = 4, ABS([Conversion Value] - [Conversion Value Previous]),
+			    _SelectedMeasure = 5, ABS([CPA] - [CPA Previous]),
+			    _SelectedMeasure = 6, ABS([CTR] - [CTR Previous]),
+			    _SelectedMeasure = 7, ABS([CVR] - [CVR Previous]),
+			    _SelectedMeasure = 8, ABS([ROAS] - [ROAS Previous])
+			)
+		lineageTag: 283ebd1c-e70d-4aca-b902-3fce41a41aaa
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Selection 1 Δ%' =
+			
+			VAR _SelectedMeasure = SELECTEDVALUE('Selection 1'[Selection 1 Order])
+			
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    _SelectedMeasure = 0, [Impressions Δ%],
+			    _SelectedMeasure = 1, [Clicks Δ%],
+			    _SelectedMeasure = 2, [Conversions Δ%],
+			    _SelectedMeasure = 3, [Cost Δ%],
+			    _SelectedMeasure = 4, [Conversion Value Δ%],
+			    _SelectedMeasure = 5, [CPA Δ%],
+			    _SelectedMeasure = 6, [CTR Δ%],
+			    _SelectedMeasure = 7, [CVR Δ%],
+			    _SelectedMeasure = 8, [ROAS Δ%]
+			)
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		lineageTag: 696503b6-215e-483c-a3f3-cf83ca26c4d4
+
+	column 'Campaign Name'
+		dataType: string
+		lineageTag: e7efa380-1333-4110-91a1-3fddc37645e4
+		summarizeBy: none
+		sourceColumn: Campaign Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Campaign ID'
+		dataType: string
+		lineageTag: 4cee9c0d-4e33-4817-b6b7-d3f4913bb77f
+		summarizeBy: none
+		sourceColumn: Campaign ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dimCampaigns = m
+		mode: import
+		source =
+				let
+				    Source = factCampaigns,
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"Campaign Name", "Campaign ID"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns", {"Campaign ID"})
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
