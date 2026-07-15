@@ -1120,6 +1120,11 @@ table Measure
 			```
 		lineageTag: 0847624c-6fa3-480e-ba28-8a50cc34923b
 
+	measure 'Clicks Ads 2' = SUM(factAds[Clicks])
+		formatString: 0
+		displayFolder: Ads\Current
+		lineageTag: 9fb02984-0c43-4c10-9cff-ebb598db1246
+
 	partition Measure = m
 		mode: import
 		source =
