@@ -1,0 +1,1136 @@
+table Measure
+	lineageTag: 92a15b46-736e-4561-83d1-2892bf78743a
+
+	measure Impressions = SUM(factCampaigns[Impressions])
+		formatString: #,0
+		displayFolder: Campaign\Current
+		lineageTag: 02d66058-5ab1-4589-915a-5f2a879485d9
+
+	measure Cost = SUM(factCampaigns[Cost])
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Campaign\Current
+		lineageTag: c6ef6971-ef33-4798-abe6-1cc8ad4e8caf
+
+	measure Conversions = ```
+			SUM(factCampaigns[Conversions])
+			
+			```
+		formatString: #,0
+		displayFolder: Campaign\Current
+		lineageTag: f1499171-e83f-483f-a3a8-d93b4363d701
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Conversion Value' = SUM(factCampaigns[Conversion Value])
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Campaign\Current
+		lineageTag: 92cdf84e-7174-4a7b-a504-2e52c90c1a5f
+
+	measure Clicks = SUM(factCampaigns[Clicks])
+		formatString: #,0
+		displayFolder: Campaign\Current
+		lineageTag: 94c74a75-24fe-4fdf-826e-4de606c50832
+
+	measure CPC = DIVIDE([Cost], [Clicks])
+		formatString: \$#,0.0;(\$#,0.0);\$#,0.0
+		displayFolder: Campaign\Current
+		lineageTag: 678763cb-d140-4523-8acb-e12a0fda224d
+
+	measure CPA = DIVIDE([Cost], [Conversions])
+		formatString: \$#,0.0;(\$#,0.0);\$#,0.0
+		displayFolder: Campaign\Current
+		lineageTag: 5b3956c6-ce81-4263-a97f-97bc4f697f07
+
+	measure CTR = DIVIDE([Clicks], [Impressions])
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Campaign\Current
+		lineageTag: ba3e2043-b91b-4f31-a611-86d8026f3c9b
+
+	measure CVR = DIVIDE([Conversions],[Clicks])
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Campaign\Current
+		lineageTag: 7c47b13c-1bc7-4297-95c2-4b860ff4d819
+
+	measure ROAS =
+			
+			DIVIDE([Conversion Value], [Cost])
+		formatString: #,0.0
+		displayFolder: Campaign\Current
+		lineageTag: 71e522d1-0e80-44d3-9a57-32109983510b
+
+	measure 'Clicks Norm' = [Clicks] / 100000
+		displayFolder: Campaign\Normalization
+		lineageTag: 2d3f7358-4887-4945-8515-790add1cc87c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Impressions Norm' = [Impressions] / 2000000
+		displayFolder: Campaign\Normalization
+		lineageTag: a39da928-1aa9-4cf3-83aa-8a1b26b34dc5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Conversions Norm' = [Conversions] / 10000
+		displayFolder: Campaign\Normalization
+		lineageTag: 6d10d433-805c-4a12-92a1-36adaf289aae
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Conversion Value Norm' = [Conversion Value] / 100000
+		displayFolder: Campaign\Normalization
+		lineageTag: 9735f7fd-5461-48eb-8f5d-f91752ab348b
+
+	measure 'Cost Norm' = [Cost]/ 100000
+		displayFolder: Campaign\Normalization
+		lineageTag: 64b4d857-2bcb-46c0-9324-bc790bf2563a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CPA Norm' = [CPA] / 300
+		displayFolder: Campaign\Normalization
+		lineageTag: 54ba37f5-1275-4c1b-b2fa-5228b77b129e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CTR Norm' = ```
+			[CTR] 
+			```
+		displayFolder: Campaign\Normalization
+		lineageTag: 725e91bc-7f18-47f3-a9bf-6aef24e9ebd1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CVR Norm' = ```
+			[CVR] 
+			```
+		displayFolder: Campaign\Normalization
+		lineageTag: b89b9f46-f4e2-4d88-959f-ad98e15d800b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'ROAS Norm' = [ROAS] / 15
+		displayFolder: Campaign\Normalization
+		lineageTag: a6262964-18dd-4d98-b3f3-20b3872341b8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Clicks Norm 2' = [Clicks Norm]
+		displayFolder: Campaign\Normalization
+		lineageTag: e3dfbce2-e556-4f17-9fe8-cf7abf2e67d9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Clicks Norm 3' = [Clicks Norm]
+		displayFolder: Campaign\Normalization
+		lineageTag: ff063173-7ec0-481c-9165-7c49244c9c67
+
+	measure 'Conversion Value Norm 2' = [Conversion Value Norm]
+		displayFolder: Campaign\Normalization
+		lineageTag: b636b317-033b-40a8-9202-f72bbd7116f4
+
+	measure 'Conversion Value Norm 3' = [Conversion Value Norm]
+		displayFolder: Campaign\Normalization
+		lineageTag: 4670bb88-f0ed-4e6c-a578-94b5758f3dd3
+
+	measure 'Conversions Norm 2' = [Conversions Norm]
+		displayFolder: Campaign\Normalization
+		lineageTag: 33138972-d3ae-446f-a87b-00528294b3ec
+
+	measure 'Conversions Norm 3' = [Conversions Norm]
+		displayFolder: Campaign\Normalization
+		lineageTag: f933b067-1826-411c-8421-b898c005d565
+
+	measure 'Cost Norm 2' = [Cost Norm]
+		displayFolder: Campaign\Normalization
+		lineageTag: 37827d58-f447-459a-a388-b99f10030b61
+
+	measure 'Cost Norm 3' = [Cost Norm]
+		displayFolder: Campaign\Normalization
+		lineageTag: 68841d38-a7ef-4f04-89b7-840495851e65
+
+	measure 'CPA Norm 2' = [CPA Norm]
+		displayFolder: Campaign\Normalization
+		lineageTag: 8d7c33f9-2058-4f9c-ae3e-b186544ed6d7
+
+	measure 'CPA Norm 3' = [CPA Norm]
+		displayFolder: Campaign\Normalization
+		lineageTag: 50c763c5-7ca3-40a0-8f2c-0ea4a5feed9a
+
+	measure 'CTR Norm 2' = [CTR Norm]
+		displayFolder: Campaign\Normalization
+		lineageTag: 8cd87290-f5e9-438d-bc5a-801fe3e47ed3
+
+	measure 'CTR Norm 3' = [CTR Norm]
+		displayFolder: Campaign\Normalization
+		lineageTag: 3ada50f7-e740-4c5d-8b20-1f49f278cc83
+
+	measure 'CVR Norm 2' = [CVR Norm]
+		displayFolder: Campaign\Normalization
+		lineageTag: db62364f-421a-4722-a9f5-1b436523c5de
+
+	measure 'CVR Norm 3' = [CVR Norm]
+		displayFolder: Campaign\Normalization
+		lineageTag: 915497fa-3b11-422f-bbc9-d9a8243db229
+
+	measure 'Impressions Norm 2' = [Impressions Norm]
+		displayFolder: Campaign\Normalization
+		lineageTag: 314fa39d-b5e5-4ddd-bea7-bed32ca06280
+
+	measure 'Impressions Norm 3' = [Impressions Norm]
+		displayFolder: Campaign\Normalization
+		lineageTag: bff206cb-7446-43e6-aa65-bd5caffad276
+
+	measure 'ROAS Norm 2' = [ROAS Norm]
+		displayFolder: Campaign\Normalization
+		lineageTag: 44417678-d5a5-4b3e-9a6d-eb454cf7bfff
+
+	measure 'ROAS Norm 3' = [ROAS Norm]
+		displayFolder: Campaign\Normalization
+		lineageTag: d300657f-b376-4929-8c9e-e504138af1f6
+
+	measure _0 = 0
+		formatString: 0
+		displayFolder: Funnel
+		lineageTag: 2ea94d10-5024-4211-a74a-70d624d17df6
+
+	measure 'Impressions Previous' =
+			
+			PreviousPeriod([Impressions])
+		formatString: 0
+		displayFolder: Campaign\Previous
+		lineageTag: 6d784c96-56f0-441e-af92-0b96c5d95189
+
+	measure 'Clicks Previous' =
+			
+			PreviousPeriod([Clicks])
+		formatString: 0
+		displayFolder: Campaign\Previous
+		lineageTag: 536084e2-24f5-4bef-885b-458b7cbf18d5
+
+	measure 'Conversions Previous' =
+			
+			PreviousPeriod([Conversions])
+		displayFolder: Campaign\Previous
+		lineageTag: 2991b0f3-44dc-4564-b6a2-a46f70d42ec9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Conversion Value Previous' =
+			
+			PreviousPeriod([Conversion Value])
+		displayFolder: Campaign\Previous
+		lineageTag: 670a5daa-dfff-4bf3-80b7-5c09696614a1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Cost Previous' =
+			
+			PreviousPeriod([Cost])
+		displayFolder: Campaign\Previous
+		lineageTag: 7350458f-4a93-4555-adcf-441f34b2669f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CPA Previous' =
+			
+			PreviousPeriod([CPA])
+		displayFolder: Campaign\Previous
+		lineageTag: 24f3fbbe-99bd-4ee4-9a0f-4f0e336b4ff8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CPC Previous' =
+			
+			PreviousPeriod([CPC])
+		displayFolder: Campaign\Previous
+		lineageTag: 11d55b65-6c53-4616-bafd-3ce8af61a0cb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CTR Previous' =
+			
+			PreviousPeriod([CTR])
+		displayFolder: Campaign\Previous
+		lineageTag: f0d97afd-7f9c-49c4-bfc0-e09f7076b934
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CVR Previous' =
+			
+			PreviousPeriod([CVR])
+		displayFolder: Campaign\Previous
+		lineageTag: 5c053cbd-c358-4d4d-adb2-543db06c1326
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'ROAS Previous' =
+			
+			PreviousPeriod([ROAS])
+		displayFolder: Campaign\Previous
+		lineageTag: f0f54501-dbb2-4392-8e82-cae9e4001f2f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'FunnelMeasure Label Position' = [Impressions]
+		formatString: 0
+		displayFolder: Funnel
+		lineageTag: 43f1f752-4baa-43af-abd9-8e4396c0dcb0
+
+	measure SelectedMeasureFunnel =
+			
+			SWITCH(
+			    SELECTEDVALUE(MeasureIndex[X]),
+			    1, [Impressions],
+			    2, [Clicks],
+			    3, [Conversions]
+			)
+		displayFolder: Funnel
+		lineageTag: 3335e379-c609-43ea-a138-52a441b2c6d1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'SelectedMeasureFunnel Negative' =
+			
+			SWITCH(
+			    SELECTEDVALUE(MeasureIndex[X]),
+			    1, [Impressions] * -1,
+			    2, [Clicks] * -1,
+			    3, [Conversions] *-1
+			)
+		displayFolder: Funnel
+		lineageTag: 70d35fa5-da36-441a-b0cb-c43a61298370
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Impressions Δ%' =
+			
+			DIVIDE([Impressions] - [Impressions Previous], [Impressions Previous])
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Campaign\Δ%
+		lineageTag: 81adea3e-f98a-46ea-a917-f9c624222036
+
+	measure 'Clicks Δ%' =
+			
+			DIVIDE([Clicks] - [Clicks Previous], [Clicks Previous])
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Campaign\Δ%
+		lineageTag: bd438bf5-adae-44a2-877a-4184c8febd1d
+
+	measure 'Conversions Δ%' =
+			
+			DIVIDE([Conversions] - [Conversions Previous], [Conversions Previous])
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Campaign\Δ%
+		lineageTag: bff57f85-41ab-43b5-88ef-fa232756e706
+
+	measure 'Conversion Value Δ%' =
+			
+			DIVIDE([Conversion Value] - [Conversion Value Previous], [Conversion Value Previous])
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Campaign\Δ%
+		lineageTag: 87d21368-9759-4ea0-961c-8c00da2169dd
+
+	measure 'Cost Δ%' =
+			
+			DIVIDE([Cost] - [Cost Previous], [Cost Previous])
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Campaign\Δ%
+		lineageTag: 3cb7bd19-8a78-4b67-a48f-a47ca34c86c5
+
+	measure 'CPA Δ%' =
+			
+			DIVIDE([CPA] - [CPA Previous], [CPA Previous])
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Campaign\Δ%
+		lineageTag: f98685ae-ea72-4f64-9fca-2459e8df3d7a
+
+	measure 'CPC Δ%' =
+			
+			DIVIDE([CPC] - [CPC Previous], [CPC Previous])
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Campaign\Δ%
+		lineageTag: f78a7f1e-27b6-4e16-b4f1-598ef24e4661
+
+	measure 'CTR Δ%' =
+			
+			DIVIDE([CTR] - [CTR Previous], [CTR Previous])
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Campaign\Δ%
+		lineageTag: 40e108e4-f47d-4114-9bb8-308c6c4dd77e
+
+	measure 'CVR Δ%' =
+			
+			DIVIDE([CVR] - [CVR Previous], [CVR Previous])
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Campaign\Δ%
+		lineageTag: 7b89ce8f-d28a-4922-90b5-d7a6c3a49fd4
+
+	measure 'ROAS Δ%' =
+			
+			DIVIDE([ROAS] - [ROAS Previous], [ROAS Previous])
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Campaign\Δ%
+		lineageTag: 91ebae71-3ee4-4741-a5f5-2d1c3187bfaa
+
+	measure 'Impressions Icon Variance' =
+			
+			iconVariance([Impressions Δ%])
+		displayFolder: Campaign\Icon
+		lineageTag: a49ca1d4-b435-4a4c-ba84-755ee13a42af
+
+	measure 'Clicks Icon Variance' =
+			
+			iconVariance([Clicks Δ%])
+		displayFolder: Campaign\Icon
+		lineageTag: 3de99b8d-5d79-4298-a44b-dff38c88cadc
+
+	measure 'Conversions Icon Variance' =
+			
+			iconVariance([Conversions Δ%])
+		displayFolder: Campaign\Icon
+		lineageTag: f819d792-92a6-4408-a6df-709b5bbd840d
+
+	measure 'Conversion Value Icon Variance' =
+			
+			iconVariance([Conversion Value Δ%])
+		displayFolder: Campaign\Icon
+		lineageTag: 4e4080ad-71e8-4854-b2af-15e7d18b7c79
+
+	measure 'Cost Icon Variance' =
+			
+			iconVariance([Cost Δ%])
+		displayFolder: Campaign\Icon
+		lineageTag: 06586be4-2b9b-4ae3-9d59-2ef54f0c1204
+
+	measure 'CPA Icon Variance' =
+			
+			iconVariance([CPA Δ%])
+		displayFolder: Campaign\Icon
+		lineageTag: f8bce8eb-80f4-4bda-9da8-c4202a90f0d7
+
+	measure 'CPC Icon Variance' =
+			
+			iconVariance([CPC Δ%])
+		displayFolder: Campaign\Icon
+		lineageTag: 96312118-3ec4-4622-993e-a0b6f4d0de83
+
+	measure 'CTR Icon Variance' =
+			
+			iconVariance([CTR Δ%])
+		displayFolder: Campaign\Icon
+		lineageTag: 9f1f9aba-5d5e-46b7-b01f-85abbd4c199c
+
+	measure 'CVR Icon Variance' =
+			
+			iconVariance([CVR Δ%])
+		displayFolder: Campaign\Icon
+		lineageTag: 1cfb1348-ea6f-44a6-a5c2-ca8628e06e33
+
+	measure 'ROAS Icon Variance' =
+			
+			iconVariance([ROAS Δ%])
+		displayFolder: Campaign\Icon
+		lineageTag: 80342445-f96f-4f73-89c1-e54b17a075f3
+
+	measure 'Impressions Icon Color' =
+			
+			CF_Icons([Impressions Δ%])
+		displayFolder: Campaign\Icon
+		lineageTag: 607874ff-76c1-4013-803f-7175166e5df2
+
+	measure 'Clicks Icon Color' =
+			
+			CF_Icons([Clicks Δ%])
+		displayFolder: Campaign\Icon
+		lineageTag: 2549c25e-20ad-46bc-86ab-6dd8595f6d7e
+
+	measure 'Conversions Icon Color' =
+			
+			CF_Icons([Conversions Δ%])
+		displayFolder: Campaign\Icon
+		lineageTag: 6450b9d4-da9a-4ddf-bf8f-85de097550e0
+
+	measure 'Conversion Value Icon Color' =
+			
+			CF_Icons([Conversion Value Δ%])
+		displayFolder: Campaign\Icon
+		lineageTag: aff05fe0-1bfb-4c62-bbfe-87ba34eeb0b9
+
+	measure 'Cost Icon Color' =
+			
+			CF_Icons([Cost Δ%])
+		displayFolder: Campaign\Icon
+		lineageTag: c89b7bdc-2a6a-4d8f-b10a-98205a357074
+
+	measure 'CPA Icon Color' =
+			
+			CF_Icons([CPA Δ%])
+		displayFolder: Campaign\Icon
+		lineageTag: f3ad775c-b2d4-4572-9eb1-358a32f8a62f
+
+	measure 'CPC Icon Color' =
+			
+			CF_Icons([CPC Δ%])
+		displayFolder: Campaign\Icon
+		lineageTag: 813cc6b8-8f9b-4370-98b6-46447ca8de2a
+
+	measure 'CTR Icon Color' =
+			
+			CF_Icons([CTR Δ%])
+		displayFolder: Campaign\Icon
+		lineageTag: 6b310754-1413-426c-a857-4274572d133c
+
+	measure 'CVR Icon Color' =
+			
+			CF_Icons([CVR Δ%])
+		displayFolder: Campaign\Icon
+		lineageTag: b6e96ff8-6f63-428a-bed1-d2cb8fcda319
+
+	measure 'ROAS Icon Color' =
+			
+			CF_Icons([ROAS Δ%])
+		displayFolder: Campaign\Icon
+		lineageTag: 11fa89ba-7c24-4eeb-b079-72569afa0022
+
+	measure _blank = BLANK()
+		formatString: 0
+		lineageTag: 971dacbf-5023-4172-abc1-3fa758692df8
+
+	measure 'Max Cost Scatter PLot' =
+			
+			MAXX(ALLSELECTED(dimCampaigns[Campaign Name]), [Cost]) * 1.25
+		lineageTag: 971fae87-46cd-447b-9ccf-019acdf83031
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Max ROAS Scatter Plot' =
+			
+			MAXX(ALLSELECTED(dimCampaigns[Campaign Name]), [ROAS]) *1.25
+		lineageTag: 2ac48c41-05bb-4338-960a-de24d4f8acc6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Scatter Plot Color Campaings' = ```
+			
+			VAR _maxCost = AVERAGEX(ALLSELECTED(dimCampaigns[Campaign Name]), [Cost]) 
+			VAR _maxRoas = Averagex(ALLSELECTED(dimCampaigns[Campaign Name]), [ROAS]) 
+			RETURN
+			SWITCH(
+			     TRUE(),
+			     [Cost] > _maxCost && [ROAS] < _maxRoas, "#D64550", //red
+			     [Cost] < _maxCost && [ROAS] > _maxRoas, "#118DFF", // blue
+			     [Cost] < _maxCost && [ROAS] < _maxRoas, "#D9B300", //yellow
+			     BLANK()
+			     )
+			```
+		lineageTag: 61a27d3b-5ec7-47d3-8a2b-c385eb127a6d
+
+	measure '_Custom Period Filter' =
+			
+			VAR _SelectedPeriod = SELECTEDVALUE ( PeriodsSelection[Period] )
+			VAR _SliderStart = MIN ( dimCalendar_Slicer[Date])
+			VAR _SliderEnd =  MAX (dimCalendar_Slicer[Date] )
+			VAR _IsCM = SELECTEDVALUE ( dimKalender[IsAktuellerMonat], FALSE() )
+			VAR _IsCY = SELECTEDVALUE ( dimKalender[IsAktuellesJahr], FALSE () )
+			VAR _IsLM = SELECTEDVALUE ( dimKalender[IsLetzterMonat], FALSE() )
+			VAR _IsLQ = SELECTEDVALUE ( dimKalender[IsLetztesQuartal], FALSE () )
+			VAR _IsLY = SELECTEDVALUE ( dimKalender[IsLetztesJahr], FALSE () )
+			RETURN
+			SWITCH (
+			    TRUE (),
+			   _SelectedPeriod = "Custom" && ISBLANK(_SliderStart), BLANK(),
+			    _SelectedPeriod = "Custom",
+			        IF ( MAX ( dimKalender[Date] ) >= _SliderStart && MAX ( dimKalender[Date] ) <= _SliderEnd, 1, 0 ) ,
+			    _SelectedPeriod = "Current Month",
+			        IF ( _IsCM, 1, 0 ),
+			    _SelectedPeriod = "Current Year",
+			        IF ( _IsCY, 1, 0 ),
+			    0
+			)
+		formatString: 0
+		lineageTag: 56077829-b009-4072-a805-f424117ea944
+
+	measure 'Show Top N Campaign' =
+			
+			VAR n = SELECTEDVALUE('TopN'[TopN], 5)
+			VAR _set = TOPN(n, ALLSELECTED(dimCampaigns[Campaign Name]), [Selection 1 Variance ABS], DESC)
+			RETURN
+			IF(CONTAINS(_set, dimCampaigns[Campaign Name], SELECTEDVALUE(dimCampaigns[Campaign Name])),1,0)
+		formatString: 0
+		lineageTag: 109e47dc-a336-4a08-9890-0af526261368
+
+	measure 'Impressions Ads' = SUM(factAds[Impressions])
+		formatString: #,0
+		displayFolder: Ads\Current
+		lineageTag: 3b5e4796-1de6-43fe-b1ac-af24113a6f87
+
+	measure 'Cost Ads' = SUM(factAds[Cost])
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Ads\Current
+		lineageTag: d2c76385-d840-4eaf-99a3-1fb6cf31d650
+
+	measure 'Conversions Ads' = ```
+			SUM(factAds[Conversions])
+			
+			```
+		formatString: #,0
+		displayFolder: Ads\Current
+		lineageTag: 93ee61d6-c9d6-416c-af7d-5b76e62a6130
+
+	measure 'Conversion Value Ads' = SUM(factAds[Conversion Value])
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Ads\Current
+		lineageTag: 9546e967-2eca-425f-9b09-193abeeeacc7
+
+	measure 'Clicks Ads' = SUM(factAds[Clicks])
+		formatString: #,0
+		displayFolder: Ads\Current
+		lineageTag: c29418eb-d3d5-4253-9bf6-3eb3cba95dd4
+
+	measure 'CPC Ads' = DIVIDE([Cost Ads], [Clicks Ads])
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Ads\Current
+		lineageTag: a9b7b3cc-0673-48fa-afa5-25d708210866
+
+	measure 'CPA Ads' = DIVIDE([Cost Ads], [Conversions Ads])
+		formatString: \$#,0.0;(\$#,0.0);\$#,0.0
+		displayFolder: Ads\Current
+		lineageTag: 5301453c-18d4-438f-9cf7-ea66f06a814b
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'CTR Ads' = DIVIDE([Clicks Ads], [Impressions Ads])
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Ads\Current
+		lineageTag: e09e0420-7b8c-4457-af91-bd8b057db8ce
+
+	measure 'CVR Ads' = DIVIDE([Conversions Ads],[Clicks Ads])
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Ads\Current
+		lineageTag: 26057215-485d-4442-bc69-d58898c86d12
+
+	measure 'ROAS Ads' = DIVIDE([Conversion Value Ads], [Cost Ads])
+		displayFolder: Ads\Current
+		lineageTag: caf9a229-b29a-46f3-bf27-1acb6f1009bf
+
+	measure 'Impressions Previous Ads' = ```
+			PreviousPeriod([Impressions Ads])
+			        
+			```
+		formatString: 0
+		displayFolder: Ads\Previous
+		lineageTag: 4863ede6-03fc-4049-b10d-ce38e419f09e
+
+	measure 'Clicks Previous Ads' = PreviousPeriod([Clicks Ads])
+		formatString: 0
+		displayFolder: Ads\Previous
+		lineageTag: ee207ec0-e191-402e-a1c9-a8b9de5c62dc
+
+	measure 'Conversions Previous Ads' = ```
+			PreviousPeriod([Conversions Ads])
+			
+			```
+		displayFolder: Ads\Previous
+		lineageTag: f3529a80-4e05-4722-9fdf-12c64020c5a3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Conversion Value Previous Ads' = ```
+			PreviousPeriod([Conversion Value Ads])
+			
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Ads\Previous
+		lineageTag: 82aa74ae-9201-4489-8eac-8d7da078892e
+
+	measure 'Cost Previous Ads' = PreviousPeriod([Cost Ads])
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Ads\Previous
+		lineageTag: 8d98d6fb-5c1a-473c-baa7-7733d0fd1bc2
+
+	measure 'CPA Ads Previous ' = PreviousPeriod([CPA Ads])
+		formatString: \$#,0.0;(\$#,0.0);\$#,0.0
+		displayFolder: Ads\Previous
+		lineageTag: 44081845-5047-45c9-ad00-7aeef55f7dde
+
+	measure 'CPC Ads Previous' = PreviousPeriod([CPC Ads])
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Ads\Previous
+		lineageTag: 309762d7-caeb-4f9a-bc7b-17dd9faaa638
+
+	measure 'CTR Ads Previous' = PreviousPeriod([CTR Ads])
+		displayFolder: Ads\Previous
+		lineageTag: ed42de87-2232-4ffc-afef-44ee608ebf91
+
+	measure 'CVR Ads Previous' = PreviousPeriod([CVR Ads])
+		displayFolder: Ads\Previous
+		lineageTag: 6fc265b9-647e-419d-9e5e-2de2857615ca
+
+	measure 'ROAS Ads Previous' = PreviousPeriod([ROAS Ads])
+		displayFolder: Ads\Previous
+		lineageTag: 9e752111-c773-44f4-b683-aa9d80deb921
+
+	measure 'Impressions Ads Δ%' = DIVIDE([Impressions Ads] - [Impressions Previous Ads], [Impressions Previous Ads])
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Ads\Δ%
+		lineageTag: 0a44e189-6e93-443e-9e56-9562d7661eec
+
+	measure 'Clicks Ads Δ%' = DIVIDE([Clicks Ads] - [Clicks Previous Ads], [Clicks Previous Ads])
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Ads\Δ%
+		lineageTag: 64d6bf38-9258-48af-8fe3-a6bb245b66f7
+
+	measure 'Conversions Ads Δ%' = DIVIDE([Conversions Ads] - [Conversions Previous Ads], [Conversions Previous Ads])
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Ads\Δ%
+		lineageTag: f3decf83-fc8a-4100-a730-3f76b1bbda1d
+
+	measure 'Conversion Value Ads Δ%' = DIVIDE([Conversion Value Ads] - [Conversion Value Previous Ads], [Conversion Value Previous Ads])
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Ads\Δ%
+		lineageTag: fd05e3e1-47b0-4e88-aa62-fa3bc432a49d
+
+	measure 'Cost Ads Δ% ' =
+			
+			DIVIDE([Cost Ads] - [Cost Previous Ads], [Cost Previous Ads])
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Ads\Δ%
+		lineageTag: 9a3d8864-4375-4f54-b897-6db0ed253c8b
+
+	measure 'CPA Ads Δ%' = DIVIDE([CPA Ads] - [CPA Ads Previous ], [CPA Ads Previous ])
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Ads\Δ%
+		lineageTag: 71b57126-aced-445c-b631-682ab007cb60
+
+	measure 'CPC Ads Δ%' = DIVIDE([CPC Ads] - [CPC Ads Previous], [CPC Ads Previous])
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Ads\Δ%
+		lineageTag: 35dec0f0-a3d5-49fa-a152-c1911925363e
+
+	measure 'CTR Ads Δ%' = DIVIDE([CTR Ads] - [CTR Ads Previous], [CTR Ads Previous])
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Ads\Δ%
+		lineageTag: 51a7a9f3-af2c-4ae4-a0c1-0acb843f1d2a
+
+	measure 'CVR Ads Δ%' = DIVIDE([CVR Ads] - [CVR Ads Previous], [CVR Ads Previous])
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Ads\Δ%
+		lineageTag: 54b067cc-a063-478b-b7c1-79d2a9442968
+
+	measure 'ROAS Ads Δ%' = DIVIDE([ROAS Ads] - [ROAS Ads Previous], [ROAS Ads Previous])
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Ads\Δ%
+		lineageTag: 30c774d1-9a98-45e0-9de6-6e99242e1c4e
+
+	measure 'Impressions Icon Variance Ads' = iconVariance([Impressions Ads Δ%])
+		displayFolder: Ads\Icon
+		lineageTag: 1adf84c9-39b6-43e4-bea0-385d95cbf2ab
+
+	measure 'Clicks Icon Variance Ads' = iconVariance([Clicks Ads Δ%])
+		displayFolder: Ads\Icon
+		lineageTag: 7e530524-9bd1-47cc-b017-9f6df33a9141
+
+	measure 'Conversions Icon Variance Ads' = iconVariance([Conversions Ads Δ%])
+		displayFolder: Ads\Icon
+		lineageTag: 3e6e9f1b-6041-4a95-a6c5-686bf23abd7d
+
+	measure 'Conversion Value Icon Variance Ads' = iconVariance([Conversion Value Ads Δ%])
+		displayFolder: Ads\Icon
+		lineageTag: d112f2c2-05a8-47af-9557-c520f816bc3e
+
+	measure 'Cost Icon Variance Ads' = iconVariance([Cost Ads Δ% ])
+		displayFolder: Ads\Icon
+		lineageTag: 217e28d9-7a5d-4417-a960-f0a636c585f5
+
+	measure 'CPA Icon Variance Ads' = iconVariance([CPA Ads Δ%])
+		displayFolder: Ads\Icon
+		lineageTag: fe4aa9bf-aab2-426e-8699-2d3e02343771
+
+	measure 'CPC Icon Variance Ads' = iconVariance([CPC Ads Δ%])
+		displayFolder: Ads\Icon
+		lineageTag: 0e7a8016-11e0-4938-b2a8-9cbe547d1863
+
+	measure 'CTR Icon Variance Ads' = iconVariance([CTR Ads Δ%])
+		displayFolder: Ads\Icon
+		lineageTag: 11b05c1a-9ad0-4534-b621-5e6fe7884e7c
+
+	measure 'CVR Icon Variance Ads' = iconVariance([CVR Ads Δ%])
+		displayFolder: Ads\Icon
+		lineageTag: 84e4d249-5b07-4df1-9473-29d876745627
+
+	measure 'ROAS Icon Variance Ads' = iconVariance([ROAS Ads Δ%])
+		displayFolder: Ads\Icon
+		lineageTag: a4b50397-3eca-457c-b2e2-8b11e0e2fbbf
+
+	measure 'Impressions Icon Color Ads' =
+			
+			CF_Icons([Impressions Ads Δ%])
+		displayFolder: Ads\Icon
+		lineageTag: 2e79a09f-4c9b-40a5-b651-e5a643958bac
+
+	measure 'Clicks Icon Color Ads' = CF_Icons([Clicks Ads Δ%])
+		displayFolder: Ads\Icon
+		lineageTag: 7ba4f022-7640-4e93-93d8-81618ce651b1
+
+	measure 'Conversions Icon Color Ads' = CF_Icons([Conversions Ads Δ%])
+		displayFolder: Ads\Icon
+		lineageTag: 240c7073-9197-46d6-83f4-8e6c9cc13913
+
+	measure 'Conversion Value Icon Color Ads' = CF_Icons([Conversion Value Ads Δ%])
+		displayFolder: Ads\Icon
+		lineageTag: 0b127871-4cf8-48ae-aa7a-8adfd6e2554d
+
+	measure 'Cost Icon Color Ads' = CF_Icons([Cost Ads Δ% ])
+		displayFolder: Ads\Icon
+		lineageTag: f23c9bda-50c1-46fb-a8b6-59c380e50b72
+
+	measure 'CPA Icon Color Ads' = CF_Icons([CPA Ads Δ%])
+		displayFolder: Ads\Icon
+		lineageTag: 90b3069d-07ba-40e0-b016-9215f0d8cba3
+
+	measure 'CPC ADS Icon Color Ads' = CF_Icons([CPC Ads Δ%])
+		displayFolder: Ads\Icon
+		lineageTag: 9d14bf9a-2bb7-45d6-aa24-cb63535d4ff8
+
+	measure 'CTR ADS Icon Color Ads' = CF_Icons([CTR Ads Δ%])
+		displayFolder: Ads\Icon
+		lineageTag: 60cef464-2df6-4a15-96ab-e6c35cba0027
+
+	measure 'CVR ADS Icon Color Ads' = CF_Icons([CVR Ads Δ%])
+		displayFolder: Ads\Icon
+		lineageTag: 24210ca2-7337-490f-b3bb-c5a483d1d35d
+
+	measure 'ROAS Icon Color Ads' = CF_Icons([ROAS Ads Δ%])
+		displayFolder: Ads\Icon
+		lineageTag: 5927dcc3-06fd-42dd-98cd-c97f0a6bf9dc
+
+	measure 'Scatter Plot Color Ads' = ```
+			
+			VAR _maxCost = AVERAGEX(ALLSELECTED(factAds[Ad Name]), [Cost]) 
+			VAR _maxRoas = Averagex(ALLSELECTED(factAds[Ad Name]), [ROAS]) 
+			RETURN
+			SWITCH(
+			     TRUE(),
+			     [Cost] > _maxCost && [ROAS] < _maxRoas, "#D64550", //red
+			     [Cost] < _maxCost && [ROAS] > _maxRoas, "#118DFF", // blue
+			     [Cost] < _maxCost && [ROAS] < _maxRoas, "#D9B300", //yellow
+			     BLANK()
+			     )
+			```
+		lineageTag: b8fa376f-6173-4726-a656-6a3aa242c823
+
+	measure 'Max Cost Scatter PLot Ads' =
+			
+			MAXX(ALLSELECTED(factAds[Ad Name]), [Cost Ads]) * 1.25
+		lineageTag: 586db774-462b-4bb9-969e-0019a353a6cf
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Max ROAS Scatter Plot Ads' =
+			
+			MAXX(ALLSELECTED(factAds[Ad Name]), [ROAS Ads]) *1.25
+		lineageTag: 1d0a3fcd-ddec-4f54-882d-1774662db28e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Tooltip Row 1' = ```
+			
+			
+			VAR LineOne = SELECTEDVALUE('Selection 1'[Selection 1 Order])
+			VAR LineTwo = SELECTEDVALUE('Selection 2'[Selection 2 Order])
+			VAR LineThree = SELECTEDVALUE('Selection 3'[Selection Order])
+			
+			VAR LineOneValue =
+			SWITCH(
+			    TRUE(),
+			    LineOne = 0, [Impressions],
+			    LineOne = 1, [Clicks],
+			    LineOne = 2, [Conversions],
+			    LineOne = 3, [Cost],
+			    LineOne = 4, [Conversion Value],
+			    LineOne = 5, [CPA],
+			    LineOne = 6, [CTR],
+			    LineOne = 7, [CVR],
+			    LineOne = 8, [ROAS]
+			)
+			
+			VAR _LineTwoOrder =
+			
+			        IF( LineTwo <> 10, LineTwo, 
+			            IF(LineThree <> 10, LineThree, BLANK())
+			    )
+			
+			VAR LineTwoValue =
+			IF(
+			    _LineTwoOrder <> BLANK(),
+			    SWITCH(
+			        TRUE(),
+			     LineTwo = 0, [Impressions],
+			    LineTwo = 1, [Clicks],
+			    LineTwo = 2, [Conversions],
+			    LineTwo = 3, [Cost],
+			    LineTwo = 4, [Conversion Value],
+			    LineTwo = 5, [CPA],
+			    LineTwo = 6, [CTR],
+			    LineTwo = 7, [CVR],
+			    LineTwo = 8, [ROAS]
+			    )
+			)
+			
+			VAR _LineThreeOrder =
+			    SWITCH(
+			        TRUE(),
+			        LineTwo <> 10 && LineThree <> 10, LineThree,
+			        LineTwo <> 10 && LineThree = 10 , BLANK(),
+			       // LineTwo = 10 && LineThree <> 10 && LineFour <> 10, LineFour,
+			        BLANK()
+			    )
+			
+			VAR LineThreeValue =
+			IF(
+			    _LineThreeOrder <> BLANK(),
+			  SWITCH(
+			        TRUE(),
+			     LineThree = 0, [Impressions],
+			    LineThree = 1, [Clicks],
+			    LineThree = 2, [Conversions],
+			    LineThree = 3, [Cost],
+			    LineThree = 4, [Conversion Value],
+			    LineThree = 5, [CPA],
+			    LineThree = 6, [CTR],
+			    LineThree = 7, [CVR],
+			    LineThree = 8, [ROAS]
+			    )
+			)
+			
+			
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    MAX('Tooltip Layout'[RowLabel]) = "Row 1", LineOneValue,
+			    MAX('Tooltip Layout'[RowLabel]) = "Row 2", LineTwoValue,
+			    MAX('Tooltip Layout'[RowLabel]) = "Row 3", LineThreeValue,
+			    MAX('Tooltip Layout'[RowLabel]) = "Row 4", [Tooltip_Linechart],
+			    MAX('Tooltip Layout'[RowLabel]) = "Row 5", [Actual Date Tooltip] 
+			)
+			```
+		lineageTag: 9c2f1f57-29d5-41c1-9332-c0aaf8c35e9e
+
+		formatStringDefinition = ```
+				
+				
+				VAR LineOne = SELECTEDVALUE('Selection 1'[Selection 1 Order])
+				VAR LineTwo = SELECTEDVALUE('Selection 2'[Selection 2 Order])
+				VAR LineThree = SELECTEDVALUE('Selection 3'[Selection Order])
+				
+				VAR LineOneValue =
+				SWITCH(
+				    TRUE(),
+				    LineOne = 0, "#,##0",
+				    LineOne = 1, "#,##0",
+				    LineOne = 2, "#,##0",
+				    LineOne = 3, "$#,##0",
+				    LineOne = 4, "$#,##0",
+				    LineOne = 5, "$#,##0.00",
+				    LineOne = 6, "#.0%",
+				    LineOne = 7, "#.0%",
+				    LineOne = 8, "#,##0.0"
+				)
+				
+				VAR _LineTwoOrder =
+				
+				        IF( LineTwo <> 10, LineTwo, 
+				            IF(LineThree <> 10, LineThree, BLANK())
+				    )
+				
+				VAR LineTwoValue =
+				IF(
+				    _LineTwoOrder <> BLANK(),
+				    SWITCH(
+				        TRUE(),
+				     LineTwo = 0, "#,##0",
+				    LineTwo = 1, "#,##0",
+				    LineTwo = 2, "#,##0",
+				    LineTwo = 3, "#,##0€",
+				    LineTwo = 4, "$#,##0",
+				    LineTwo = 5, "$#,##0.00",
+				    LineTwo = 6, "#.0%",
+				    LineTwo = 7, "#.0%",
+				    LineTwo = 8, "#,##0.0"
+				    )
+				)
+				
+				VAR _LineThreeOrder =
+				    SWITCH(
+				        TRUE(),
+				        LineTwo <> 10 && LineThree <> 10, LineThree,
+				        LineTwo <> 10 && LineThree = 10 , BLANK(),
+				       // LineTwo = 10 && LineThree <> 10 && LineFour <> 10, LineFour,
+				        BLANK()
+				    )
+				
+				VAR LineThreeValue =
+				IF(
+				    _LineThreeOrder <> BLANK(),
+				  SWITCH(
+				        TRUE(),
+				     LineThree = 0, "#,##0",
+				    LineThree = 1, "#,##0",
+				    LineThree = 2, "#,##0",
+				    LineThree = 3, "#,##0€",
+				    LineThree = 4, "$#,##0",
+				    LineThree = 5, "$#,##0.00",
+				    LineThree = 6, "#.0%",
+				    LineThree = 7, "#.0%",
+				    LineThree = 8, "#,##0.0"
+				    )
+				)
+				
+				
+				RETURN
+				SWITCH(
+				    TRUE(),
+				    MAX('Tooltip Layout'[RowLabel]) = "Row 1", LineOneValue,
+				    MAX('Tooltip Layout'[RowLabel]) = "Row 2", LineTwoValue,
+				    MAX('Tooltip Layout'[RowLabel]) = "Row 3", LineThreeValue)
+				   // MAX('Tooltip Layout'[RowLabel]) = "Row 4", [Tooltip_Linechart],
+				   // MAX('Tooltip Layout'[RowLabel]) = "Row 5", [Actual Date Tooltip] 
+				
+				```
+
+	measure Tooltip_Linechart =
+			
+			VAR _Jahr = SELECTEDVALUE('dimKalender'[Jahr])
+			VAR _Month =  SELECTEDVALUE('dimKalender'[Monat])
+			VAR _Quarter = SELECTEDVALUE('dimKalender'[Quartal])
+			VAR _Week = SELECTEDVALUE('dimKalender'[Woche])
+			
+			RETURN
+			SWITCH(TRUE(),
+			    NOT ISBLANK(_Week), "KW" & _Week & " " & _Jahr,
+			    NOT ISBLANK(_Month), _Month & " " & _Jahr,
+			    NOT ISBLANK(_Quarter),  _Quarter & " " & _Jahr
+			)
+		lineageTag: abd5756a-56a2-49e0-b9b8-7eda87a75f0f
+
+	measure 'Tooltip_Linechart date' =
+			
+			VAR _Jahr = SELECTEDVALUE('dimKalender'[Jahr])
+			VAR _Month =  SELECTEDVALUE('dimKalender'[Monat])
+			VAR _Quarter = SELECTEDVALUE('dimKalender'[Quartal])
+			VAR _Week = SELECTEDVALUE('dimKalender'[Woche])
+			
+			RETURN
+			SWITCH(TRUE(),
+			    NOT ISBLANK(_Week), LASTNONBLANK(dimKalender[WocheJahr],0),
+			    NOT ISBLANK(_Month), LASTNONBLANK(dimKalender[MonthYear],0),
+			    NOT ISBLANK(_Quarter), LASTNONBLANK(dimKalender[QuartalJahr],0)
+			)
+		formatString: General Date
+		lineageTag: 19df1b20-d4b5-45e1-acce-d17d854a05ac
+
+	measure 'Actual Date Tooltip' =
+			
+			VAR _StartDate = MIN(dimKalender[Date])
+			VAR _EndDate = MAX(dimKalender[Date])
+			RETURN
+			    FORMAT(_StartDate,"DD/MM/YYYY") & " - " & FORMAT(_EndDate,"DD/MM/YYYY")
+		lineageTag: ce424758-0364-48b0-8bb0-6d17e619dc3b
+
+	measure 'Tooltip Row 1 Label' = ```
+			
+			
+			VAR LineOne = SELECTEDVALUE('Selection 1'[Selection 1 Order])
+			VAR LineTwo = SELECTEDVALUE('Selection 2'[Selection 2 Order])
+			VAR LineThree = SELECTEDVALUE('Selection 3'[Selection Order])
+			
+			VAR LineOneValue =
+			SWITCH(
+			    TRUE(),
+			    LineOne = 0, "Impressions",
+			    LineOne = 1, "Clicks",
+			    LineOne = 2, "Conversions",
+			    LineOne = 3, "Cost",
+			    LineOne = 4, "Conversion Value",
+			    LineOne = 5, "CPA",
+			    LineOne = 6, "CTR",
+			    LineOne = 7, "CVR",
+			    LineOne = 8, "ROAS"
+			)
+			
+			VAR _LineTwoOrder =
+			
+			        IF( LineTwo <> 10, LineTwo, 
+			            IF(LineThree <> 10, LineThree, BLANK())
+			    )
+			
+			VAR LineTwoValue =
+			IF(
+			    _LineTwoOrder <> BLANK(),
+			    SWITCH(
+			        TRUE(),
+			     LineTwo = 0, "Impressions",
+			    LineTwo = 1, "Clicks",
+			    LineTwo = 2, "Conversions",
+			    LineTwo = 3, "Cost",
+			    LineTwo = 4, "Conversion Value",
+			    LineTwo = 5, "CPA",
+			    LineTwo = 6, "CTR",
+			    LineTwo = 7, "CVR",
+			    LineTwo = 8, "ROAS"
+			    )
+			)
+			
+			VAR _LineThreeOrder =
+			    SWITCH(
+			        TRUE(),
+			        LineTwo <> 10 && LineThree <> 10, LineThree,
+			        LineTwo <> 10 && LineThree = 10 , BLANK(),
+			       // LineTwo = 10 && LineThree <> 10 && LineFour <> 10, LineFour,
+			        BLANK()
+			    )
+			
+			VAR LineThreeValue =
+			IF(
+			    _LineThreeOrder <> BLANK(),
+			  SWITCH(
+			        TRUE(),
+			     LineThree = 0, "Impressions",
+			    LineThree = 1, "Clicks",
+			    LineThree = 2, "Conversions",
+			    LineThree = 3, "Cost",
+			    LineThree = 4, "Conversion Value",
+			    LineThree = 5, "CPA",
+			    LineThree = 6, "CTR",
+			    LineThree = 7, "CVR",
+			    LineThree = 8, "ROAS"
+			    )
+			)
+			
+			
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    MAX('Tooltip Layout'[RowLabel]) = "Row 1", LineOneValue,
+			    MAX('Tooltip Layout'[RowLabel]) = "Row 2", LineTwoValue,
+			    MAX('Tooltip Layout'[RowLabel]) = "Row 3", LineThreeValue,
+			    MAX('Tooltip Layout'[RowLabel]) = "Row 4", "Actual Date",
+			    MAX('Tooltip Layout'[RowLabel]) = "Row 5", " " 
+			)
+			```
+		lineageTag: 0847624c-6fa3-480e-ba28-8a50cc34923b
+
+	partition Measure = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

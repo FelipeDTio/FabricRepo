@@ -1,0 +1,25 @@
+table dimCountry
+	lineageTag: 53c47e85-2d38-43d9-8c49-c07fe7fc7ae1
+
+	column Country
+		dataType: string
+		lineageTag: ea8bf052-c488-4df9-abca-5ea836020fe6
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dimCountry = m
+		mode: import
+		source =
+				let
+				    Source = factCampaigns,
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"Country"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns")
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

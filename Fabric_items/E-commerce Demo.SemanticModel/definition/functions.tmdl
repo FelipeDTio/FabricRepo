@@ -1,0 +1,100 @@
+function PreviousPeriod = ```
+		(base: expr) =>
+						VAR _SelectedPeriod = 
+							SELECTEDVALUE ( 'PeriodsSelection'[Period] )
+					  	RETURN
+						SWITCH (
+		            TRUE(),
+		            _SelectedPeriod = "Current Month",
+		                VAR _TodayDay = DAY ( CALCULATE( MAX ( dimKalender[Date] ), REMOVEFILTERS(dimKalender) ) )
+		                VAR _MinDate = MIN ( dimKalender[Date] )
+		                VAR _MinDateComp = EDATE ( _MinDate, -1 )
+		                VAR _MaxDateComp = DATE ( YEAR(_MinDateComp), MONTH(_MinDateComp), _TodayDay )
+		                RETURN
+		                    CALCULATE (
+		                        base,
+		                        REMOVEFILTERS ( dimKalender ),
+		                        DATESBETWEEN ( dimKalender[Date], _MinDateComp, _MaxDateComp )
+		                    ),
+		            
+		            _SelectedPeriod = "Current Year",
+		                VAR _MinDate = MIN ( dimKalender[Date] )
+		                VAR _MaxDate = MAX ( dimKalender[Date] )
+		                VAR _MinDateComp = EDATE ( _MinDate, -12 )
+		                VAR _MaxDateComp = EDATE ( _MaxDate, -12 )
+		                RETURN
+		                    CALCULATE (
+		                        base,
+		                        REMOVEFILTERS ( dimKalender ),
+		                        DATESBETWEEN ( dimKalender[Date], _MinDateComp, _MaxDateComp )
+		                    ),
+		            
+		            
+		            // Custom - default behavior
+		            VAR _MinDate = MIN ( dimKalender[Date] )
+		            VAR _MaxDate = MAX ( dimKalender[Date] )
+		            VAR _DatesSel = DATESBETWEEN ( dimKalender[Date], _MinDate, _MaxDate )
+		            VAR _DaysCount = COUNTROWS ( _DatesSel )
+		            VAR _MinDateComp = _MinDate - _DaysCount
+		            VAR _MaxDateComp = _MaxDate - _DaysCount
+		            RETURN
+		                CALCULATE (
+		                    base,
+		                    REMOVEFILTERS ( dimKalender ),
+		                    DATESBETWEEN ( dimKalender[Date], _MinDateComp, _MaxDateComp )
+		                )
+		        )
+		```
+	lineageTag: 208429fc-8532-4c8e-8acd-d592b4ba8006
+
+function Growth = ```
+		(
+			metric: scalar expr,
+			returntype : string val
+			
+		) =>
+		var  selecMetric = 
+			metric
+		var compare =
+			CALCULATE(metric, DATEADD(dimKalender[Date], -1,YEAR))
+		var hasData =
+			not ( ISBLANK(selecMetric) || ISBLANK(compare))
+		var pct = 
+			DIVIDE(selecMetric-compare,compare)
+		var delta = 
+			selecMetric - compare
+		RETURN
+			SWITCH(
+					TRUE(),
+					NOT hasData, BLANK(),
+					returntype = "pct", pct,
+					returntype = "delta", delta
+			)
+		```
+	lineageTag: 07d2ac10-85e1-49b2-94c9-c75e93a5b0ae
+
+function iconVariance = ```
+		(
+			metric: scalar expr
+			
+		) =>
+		
+		IF( 
+		    metric >= 0 , REPT( "‏‏‎ ‎", 2) & "🞁",
+		    REPT( "‏‏‎ ‎", 2) &"🞃" 
+		
+			)
+		```
+	lineageTag: 4569223a-331c-44ee-b36d-37539046737e
+
+function CF_Icons = ```
+		(
+		    metric: SCALAR EXPR
+		) =>
+		
+		IF( metric >= 0, "#3CD8AD",
+		"#EF4785" 
+		)
+		```
+	lineageTag: ccff8f92-5da2-45f6-97f3-3371867a2148
+

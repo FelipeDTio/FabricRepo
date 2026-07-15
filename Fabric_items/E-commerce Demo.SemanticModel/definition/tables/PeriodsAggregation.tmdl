@@ -1,0 +1,49 @@
+table PeriodsAggregation
+	lineageTag: 03a7943d-be16-4ade-a1cd-e717898e3378
+
+	column PeriodsAggregation
+		lineageTag: 10b96ada-87ed-4fc0-843c-102da1f18aaa
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'PeriodsAggregation Order'
+
+		relatedColumnDetails
+			groupByColumn: 'PeriodsAggregation Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PeriodsAggregation Fields'
+		isHidden
+		lineageTag: a35fae63-1ba2-41e9-8d56-06f4e6453e56
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'PeriodsAggregation Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PeriodsAggregation Order'
+		isHidden
+		formatString: 0
+		lineageTag: 9cf87d98-6b60-415f-b975-308d534130e8
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition PeriodsAggregation = calculated
+		mode: import
+		source =
+				{
+				    ("M", NAMEOF('dimKalender'[Monat Chart]), 2),
+				    ("D", NAMEOF('dimKalender'[Date]), 0),
+				    ("W", NAMEOF('dimKalender'[Woche Chart]), 1)
+				}
+
+	annotation PBI_Id = 367b681f08884cdd9671439fb6036218
+

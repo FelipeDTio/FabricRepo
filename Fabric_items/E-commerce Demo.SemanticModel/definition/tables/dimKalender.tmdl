@@ -1,0 +1,311 @@
+table dimKalender
+	lineageTag: 489a9456-1192-4fc8-b283-35125dcd506a
+
+	column Date
+		formatString: General Date
+		lineageTag: 450e046b-ffc4-46d9-9dfb-e3707c6e24d1
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 8f65a0ad-0389-4ffb-a6f6-90132ee2fe28
+			defaultHierarchy: LocalDateTable_42b91725-cf2b-49bb-8fbb-72a5dc047799.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jahr
+		formatString: 0
+		lineageTag: f785e8db-98c9-490a-bad7-e222bb36ab1e
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Jahr]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Monatsnummer
+		formatString: 0
+		lineageTag: 7fc19353-dc6a-4f18-bf2e-a2e9b8508aae
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Monatsnummer]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Monat
+		lineageTag: c1907299-aff2-4f86-b2d9-f0c0cb24d170
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Monat]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Monat Kurz'
+		lineageTag: d4d8f368-4b55-4f16-9397-7541a92c08d0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Monat Kurz]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Monat Initial'
+		lineageTag: b971b756-67fc-4b5d-8848-8cc1217997df
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Monat Initial]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quartal
+		lineageTag: 8290929b-4b0d-47aa-892f-e42a9d8b0cd4
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Quartal]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jahr-Monat
+		lineageTag: 9a1a90d1-c4ba-4a37-8a01-9cf6939e51c7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Jahr-Monat]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Monat-Jahr
+		lineageTag: fae0fb4a-3aaf-4224-877b-fc6a94bc8fd1
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Monat-Jahr]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Wochentag Nummer'
+		formatString: 0
+		lineageTag: cffcd516-5c10-4ede-8f2b-86f82f3ff78f
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Wochentag Nummer]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Wochentag
+		lineageTag: d0b997fc-464a-45ec-840a-05e94cf0ed64
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Wochentag]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Wochenende
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 17d491b3-ab9d-427b-be78-f9be78b79af7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Wochenende]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthYear
+		formatString: General Date
+		lineageTag: 73ea31a6-6d17-4327-8341-e9fe97184152
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MonthYear]
+
+		variation Variation
+			isDefault
+			relationship: 07585206-f7b0-4a81-93bb-0f50b0803dd7
+			defaultHierarchy: LocalDateTable_edf5f81c-23bf-46d7-8559-263cd363032e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuartalJahr
+		formatString: General Date
+		lineageTag: 842eb176-0b70-458d-accc-57db21ab4aad
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [QuartalJahr]
+
+		variation Variation
+			isDefault
+			relationship: ff184c2b-6d1a-4bb3-a9d7-88090a5b238e
+			defaultHierarchy: LocalDateTable_755afca2-81c7-49c5-919b-87b63b2a7f65.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Woche
+		formatString: 0
+		lineageTag: f1c2e0db-f723-4250-bdb3-79abac4ab90c
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Woche]
+
+		annotation SummarizationSetBy = Automatic
+
+	column WocheJahr
+		formatString: General Date
+		lineageTag: 6e7d87ec-f650-415c-b76e-ffe606fa130d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [WocheJahr]
+
+		variation Variation
+			isDefault
+			relationship: 8f29ac69-f01c-4a67-8bd4-2615b1d86bdf
+			defaultHierarchy: LocalDateTable_a0b65e61-b967-4a30-a2c8-0d66ae3213e5.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Woche Chart'
+		lineageTag: e97a650a-bd23-4de3-a7ac-a9067fd9e4ff
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Woche Chart]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Monat Chart'
+		lineageTag: dcf37df5-0eab-4dd7-acf4-f47a5ea499a9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Monat Chart]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Quartal Chart'
+		lineageTag: 258b8357-82f9-4528-be82-1301d6cafb8a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Quartal Chart]
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsAktuellerMonat
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: fe0d1749-f990-4ff7-b307-ba65be7cc727
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [IsAktuellerMonat]
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsLetzterMonat
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e876fc70-ae08-454f-afa4-8a5e2bb91978
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [IsLetzterMonat]
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsVorVorMonat
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c7216b4e-5c6f-4b7a-b73e-1d91683445c2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [IsVorVorMonat]
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsAktuellesJahr
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e2bf56c7-ae39-4aac-930d-23d97e49f02c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [IsAktuellesJahr]
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsLetztesJahr
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 2b549daa-8e5c-4392-8233-790859d0ce07
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [IsLetztesJahr]
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsVorVorJahr
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9b41b562-80d1-4d80-97c7-cd1b5a17e958
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [IsVorVorJahr]
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsLetztesQuartal
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 257522e3-193f-48ef-a48d-2279eb9d3a12
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [IsLetztesQuartal]
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsVorVorQuartal
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: dd13c869-39dc-4281-bc79-02610b2823da
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [IsVorVorQuartal]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dimKalender = calculated
+		mode: import
+		source = ```
+				
+				
+				VAR _MinDate =  MIN( factCampaigns[Date] )
+				VAR _MaxDate =  MAX( factCampaigns[Date] )
+				VAR _Dates = CALENDAR( _MinDate, _MaxDate )
+				VAR _MaxYear = YEAR(_MaxDate)
+				VAR _MaxMonth = MONTH(_MaxDate)
+				VAR _MaxQuarter = QUARTER(_MaxDate)
+				
+				RETURN
+				ADDCOLUMNS(
+				    _Dates,
+				    "Jahr", YEAR([Date]),
+				    "Monatsnummer", MONTH([Date]),
+				    "Monat", FORMAT([Date], "MMMM", "de-DE" ),
+				    "Monat Kurz", FORMAT([Date], "MMM", "de-DE" ),
+				    "Monat Initial", LEFT(FORMAT([Date], "MMMM"), 1),
+				    "Quartal", "Q" & FORMAT([Date], "Q"),
+				    "Jahr-Monat", FORMAT([Date], "YYYY-MM"),
+				    "Monat-Jahr", FORMAT([Date], "mmm YYYY"),
+				    "Wochentag Nummer", WEEKDAY([Date], 2),  -- 1=Sonntag, 2=Montag
+				    "Wochentag", FORMAT([Date], "dddd", "de-DE" ),
+				    "Wochenende", IF(WEEKDAY([Date], 2) > 5, TRUE, FALSE),
+				    "MonthYear", DATE( YEAR( [Date] ), MONTH( [Date] ), 1), 
+				    "QuartalJahr", EOMONTH([Date], 3 * (INT((MONTH([Date]) - 1) / 3) + 1) - MONTH([Date])),
+				    "Woche", WEEKNUM( [Date], 21 ),
+				    "WocheJahr", [Date]+1-WEEKDAY([Date]-1),
+				    "Woche Chart", "KW" & WEEKNUM( [Date], 21 ) & " " & YEAR([Date]),
+				    "Monat Chart" , FORMAT([Date], "MMM", "de-DE" ) & " " & YEAR([Date]),
+				    "Quartal Chart",  "Q" & FORMAT([Date], "Q") & " " &  YEAR([Date]),
+				    "IsAktuellerMonat", YEAR([Date]) = _MaxYear && MONTH([Date]) = _MaxMonth,
+				    "IsLetzterMonat",
+				        (YEAR([Date]) = _MaxYear && MONTH([Date]) = _MaxMonth - 1)
+				        || (_MaxMonth = 1 && YEAR([Date]) = _MaxYear - 1 && MONTH([Date]) = 12),
+				    "IsVorVorMonat",
+				        (YEAR([Date]) = _MaxYear && MONTH([Date]) = _MaxMonth - 2)
+				        || (_MaxMonth = 1 && YEAR([Date]) = _MaxYear - 1 && MONTH([Date]) = 11)
+				        || (_MaxMonth = 2 && YEAR([Date]) = _MaxYear - 1 && MONTH([Date]) = 12),
+				    "IsAktuellesJahr", YEAR([Date]) = _MaxYear,
+				    "IsLetztesJahr", YEAR([Date]) = _MaxYear - 1,
+				    "IsVorVorJahr", YEAR([Date]) = _MaxYear - 2,
+				    "IsLetztesQuartal",
+				        (YEAR([Date]) = _MaxYear && QUARTER([Date]) = _MaxQuarter - 1)
+				        || (_MaxQuarter = 1 && YEAR([Date]) = _MaxYear - 1 && QUARTER([Date]) = 4),
+				    "IsVorVorQuartal",
+				        (YEAR([Date]) = _MaxYear && QUARTER([Date]) = _MaxQuarter - 2)
+				        || (_MaxQuarter = 1 && YEAR([Date]) = _MaxYear - 1 && QUARTER([Date]) = 3)
+				        || (_MaxQuarter = 2 && YEAR([Date]) = _MaxYear - 1 && QUARTER([Date]) = 4))
+				```
+
+	annotation PBI_Id = 4fb106d3da974290a1a531f87ef8173f
+

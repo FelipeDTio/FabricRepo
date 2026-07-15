@@ -1,0 +1,24 @@
+table 'Tooltip Layout'
+	lineageTag: 68fdd224-a0c9-42f5-9d15-6cf00b45f32d
+
+	column RowLabel
+		dataType: string
+		lineageTag: 6c1aac2d-5937-409d-be97-af3d3a929087
+		summarizeBy: none
+		sourceColumn: RowLabel
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Tooltip Layout' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WCsovVzBUitWBsIzgLGM4ywTOMlWKjQUA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [RowLabel = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"RowLabel", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
