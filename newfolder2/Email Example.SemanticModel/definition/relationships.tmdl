@@ -1,0 +1,5 @@
+relationship de282f47-17e6-4872-a5cc-60ec82ab0896
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Campaigns.Date
+	toColumn: LocalDateTable_4f317d19-af50-4a9a-bb77-6a717c368295.Date
+

@@ -1,0 +1,19 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-DE
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Campaigns","Sales data"]
+
+ref table Campaigns
+ref table DateTableTemplate_9d29e55c-6836-4116-9e6b-3b62d80c48b9
+ref table LocalDateTable_4f317d19-af50-4a9a-bb77-6a717c368295
+ref table 'Sales data'
+
+ref cultureInfo en-US
+
