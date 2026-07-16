@@ -1,0 +1,43 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "dcd6fd96aa77a8bd2081",
+  "position": {
+    "x": 566.45476772616132,
+    "y": 135.61532192339038,
+    "z": 1000,
+    "height": 155.43602281988589,
+    "width": 459.00570497147515,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Campaigns"
+                        }
+                      },
+                      "Property": "Campaign Name"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(Campaigns.Campaign Name)",
+              "nativeQueryRef": "First Campaign Name"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
