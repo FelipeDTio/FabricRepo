@@ -1,0 +1,69 @@
+table 'Sales data'
+	lineageTag: e8c13579-349a-451d-93f3-4df9e4950f5d
+
+	measure 'Total Sales' = ```
+			SUM('Sales data'[Sales]) 
+			```
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 8d594a98-ad16-4c74-88c5-ee89fbe51c64
+
+	column Name
+		dataType: string
+		lineageTag: ac85d3cb-d9ce-40a7-bab8-857e28725ce2
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Email
+		dataType: string
+		lineageTag: 1776b9a9-ac55-4842-addb-cd7e08f31f29
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales
+		dataType: int64
+		formatString: 0
+		lineageTag: e1f68132-6156-4583-844c-21448cda54bb
+		summarizeBy: sum
+		sourceColumn: Sales
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Email Link' = CONCATENATE("mailto:", 'Sales data'[Email])
+		lineageTag: 9c982561-d217-434f-885c-69bdbaa55bc3
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Manager
+		dataType: string
+		lineageTag: 237074c3-3172-41a9-a233-c4b9e10b368e
+		summarizeBy: none
+		sourceColumn: Manager
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'EmailNotice (Static)' = "mailto:" & 'Sales data'[Email] & "?subject=Latest Sales Info&body=Hello,%0D%0A%0D%0AYour Monthly Sales totaled to " & 'Sales data'[Sales] & "."
+		lineageTag: f77b7c09-c380-4a0b-9dd1-7dec0ff62217
+		dataCategory: Uncategorized
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Sales data' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("VYyxDgIhEER/hWx9uQRkz1as1VxPKFakIAE0d5jc57ugxVnNy+TNWAtXWiIJAwPkRnSqYa2jf2ZulEaUnJe3pxXcYMFsIYkzV8Rw37vThKg5TabyoC7fqFKKofs//ptIpY/YJin68L0vhcTc7hlee/egUMvuhg2c+wA=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Name = _t, Email = _t, Sales = _t, Manager = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Name", type text}, {"Email", type text}, {"Sales", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

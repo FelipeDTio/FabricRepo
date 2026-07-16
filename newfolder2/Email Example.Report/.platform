@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Email Example"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "8515101a-8af9-9289-4ba2-23ab19f823bb"
+  }
+}

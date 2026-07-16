@@ -1,0 +1,128 @@
+table Campaigns
+	lineageTag: a5182096-f828-4c87-8a65-4eec4e963544
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6bee7ff0-1fd1-4f95-835f-5f970903f5b5
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: de282f47-17e6-4872-a5cc-60ec82ab0896
+			defaultHierarchy: LocalDateTable_4f317d19-af50-4a9a-bb77-6a717c368295.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Campaign Name'
+		dataType: string
+		lineageTag: 0fa53746-49cb-485c-aeba-f6e4c58a82a0
+		summarizeBy: none
+		sourceColumn: Campaign Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Campaign ID'
+		dataType: string
+		lineageTag: 2c172b46-90df-4a95-a6ef-5c7479f525e9
+		summarizeBy: none
+		sourceColumn: Campaign ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ad Group Name'
+		dataType: string
+		lineageTag: 0ca270af-0b3d-4567-9021-7d6a325576d6
+		summarizeBy: none
+		sourceColumn: Ad Group Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Asset Group Name'
+		dataType: string
+		lineageTag: 7cc83937-0256-4b9b-af03-039bd1a8f9cc
+		summarizeBy: none
+		sourceColumn: Asset Group Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Device
+		dataType: string
+		lineageTag: 0a6b59f1-9f4c-48f1-9c82-e343ee346e5d
+		summarizeBy: none
+		sourceColumn: Device
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 22959ef0-d286-444d-921f-19e0d8b17b23
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Impressions
+		dataType: int64
+		formatString: 0
+		lineageTag: 8b3dd965-1183-4e2d-9cc6-878363cc5cc9
+		summarizeBy: sum
+		sourceColumn: Impressions
+
+		annotation SummarizationSetBy = Automatic
+
+	column Clicks
+		dataType: int64
+		formatString: 0
+		lineageTag: f35da1ca-762d-48dd-b6ab-0e8c5cad1357
+		summarizeBy: sum
+		sourceColumn: Clicks
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cost
+		dataType: double
+		lineageTag: a51aad5f-02a4-4d21-9fc8-2e00a74ae33a
+		summarizeBy: sum
+		sourceColumn: Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Conversions
+		dataType: double
+		lineageTag: 5a33a298-aecd-4a65-a7a9-49f3e011b661
+		summarizeBy: sum
+		sourceColumn: Conversions
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Conversion Value'
+		dataType: double
+		lineageTag: 2f592cd6-dd6a-4eee-8156-e4a9e727c9eb
+		summarizeBy: sum
+		sourceColumn: Conversion Value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Campaigns = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\FelipeLopezNavarro\Data Training Dropbox\Data Training\16. Demo Reports\E-commerce\AdWords_Instruments_Store_Dataset.xlsx"), null, true),
+				    Campaigns_Sheet = Source{[Item="Campaigns",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Campaigns_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Date", type date}, {"Campaign Name", type text}, {"Campaign ID", type text}, {"Ad Group Name", type text}, {"Asset Group Name", type text}, {"Device", type text}, {"Country", type text}, {"Impressions", Int64.Type}, {"Clicks", Int64.Type}, {"Cost", type number}, {"Conversions", type number}, {"Conversion Value", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
