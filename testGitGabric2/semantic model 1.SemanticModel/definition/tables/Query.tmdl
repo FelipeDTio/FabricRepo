@@ -1,0 +1,33 @@
+table Query
+	lineageTag: bb7f5074-84f4-427f-bcab-c9e4a0c8c775
+	sourceLineageTag: [dbo].[Query]
+
+	column 'Source.Name'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: af0b3039-d786-4124-acec-7d9380a6f25c
+		sourceLineageTag: Source.Name
+		summarizeBy: none
+		sourceColumn: Source.Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column1
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 3e215856-dc0e-4baf-8245-2cfd000579e2
+		sourceLineageTag: Column1
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Query = entity
+		mode: directLake
+		source
+			entityName: Query
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+
