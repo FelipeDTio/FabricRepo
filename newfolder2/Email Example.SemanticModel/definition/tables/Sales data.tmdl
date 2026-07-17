@@ -7,6 +7,10 @@ table 'Sales data'
 		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
 		lineageTag: 8d594a98-ad16-4c74-88c5-ee89fbe51c64
 
+	measure 'new measure' = SUM('Sales data'[Sales])
+		formatString: 0
+		lineageTag: b77de617-0900-4a62-9bf7-7c163d6d1f04
+
 	column Name
 		dataType: string
 		lineageTag: ac85d3cb-d9ce-40a7-bab8-857e28725ce2
