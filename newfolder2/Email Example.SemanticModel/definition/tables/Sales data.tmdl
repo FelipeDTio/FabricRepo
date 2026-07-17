@@ -11,6 +11,10 @@ table 'Sales data'
 		formatString: 0
 		lineageTag: b77de617-0900-4a62-9bf7-7c163d6d1f04
 
+	measure 'Measure 2' = 'Sales data'[Total Sales]
+		formatString: 0
+		lineageTag: 546731e8-10a8-4f11-b543-8fedfdf19e60
+
 	column Name
 		dataType: string
 		lineageTag: ac85d3cb-d9ce-40a7-bab8-857e28725ce2
